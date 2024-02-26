@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
   users: JSON.parse(localStorage.getItem("users")) || [],
@@ -9,7 +10,27 @@ const registerSlice = createSlice({
   initialState,
   reducers: {
     registerUser: (state, action) => {
-      state.users.push(action.payload);
+      const {
+        firstName,
+        lastName,
+        fullName,
+        subtitle,
+        about,
+        profileImage,
+        ...rest
+      } = action.payload;
+
+      const userId = uuidv4();
+      const newUser = {
+        ...rest,
+        userId,
+        fullName: fullName || `${firstName} ${lastName}`,
+        subtitle: subtitle || null,
+        about: about || null,
+        profileImage: profileImage || null,
+      };
+
+      state.users.push(newUser);
       localStorage.setItem("users", JSON.stringify(state.users));
     },
   },
