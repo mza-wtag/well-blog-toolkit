@@ -4,8 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import SearchIcon from "@assets/images/icons/search.svg";
 import LogoutIcon from "@assets/images/icons/Frame.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser } from "@actions/authActions";
+// import { logoutUser } from "@actions/authActions";
 import Button from "@components/Button/Button";
+import { logoutUser } from "@features/authSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const Header = () => {
         {loggedInUser ? (
           <div className="navbar__menu">
             Welcome
-            <span className="navbar__user-name">{loggedInUser.fullName} !</span>
+            <span className="navbar__user-name">{loggedInUser.userName} !</span>
             <Button onClick={handleLogout} className="navbar__logout-btn">
               <img src={LogoutIcon} alt="Logout" />
             </Button>
