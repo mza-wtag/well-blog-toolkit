@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import BlogDetails from "@components/BlogDetails/BlogDetails";
-// import { getBlogPostsFromLocalStorage } from "@actions/blogActions";
 import { Loader } from "@components/Loader/Loader";
 import { getBlogPosts } from "@features/blogSlice";
 

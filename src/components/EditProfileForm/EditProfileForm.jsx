@@ -1,3 +1,5 @@
+// EditProfileForm.js
+
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "@components/EditProfileForm/editProfileForm.scss";
@@ -7,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "@components/Button/Button";
 import ImageDnD from "@components/ImageDnD/ImageDnD";
 import { loginUser } from "@features/authSlice";
+import { updateUser } from "@features/registerSlice";
 
 const EditProfileForm = () => {
   const { loggedInUser } = useSelector((state) => state.auth);
@@ -33,6 +36,7 @@ const EditProfileForm = () => {
       profileImage: imagePreview,
     };
     dispatch(loginUser(updatedUser));
+    dispatch(updateUser(updatedUser));
     resetForm(form);
   };
 

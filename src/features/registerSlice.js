@@ -1,3 +1,5 @@
+// registerSlice.js
+
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
@@ -33,9 +35,19 @@ const registerSlice = createSlice({
       state.users.push(newUser);
       localStorage.setItem("users", JSON.stringify(state.users));
     },
+    updateUser: (state, action) => {
+      const updatedUser = action.payload;
+      const index = state.users.findIndex(
+        (user) => user.userId === updatedUser.userId
+      );
+      if (index !== -1) {
+        state.users[index] = updatedUser;
+        localStorage.setItem("users", JSON.stringify(state.users));
+      }
+    },
   },
 });
 
-export const { registerUser } = registerSlice.actions;
+export const { registerUser, updateUser } = registerSlice.actions;
 
 export default registerSlice.reducer;
