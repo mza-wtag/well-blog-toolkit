@@ -4,7 +4,7 @@
   align-items: center;
   background-color: $primary-color;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 1rem;
 
   &__logo {
@@ -48,10 +48,5 @@
     span {
       margin: 0 1rem;
     }
-  }
-  &__logout-btn {
-    background: transparent;
-    border: none;
-    cursor: pointer;
   }
 }
