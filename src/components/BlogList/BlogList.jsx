@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 import BlogCard from "@components/BlogCard/BlogCard";
 import NotFound from "@components/NotFound/NotFound";
 import Button from "@components/Button/Button";
