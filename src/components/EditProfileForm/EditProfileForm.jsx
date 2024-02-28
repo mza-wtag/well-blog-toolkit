@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import "@components/EditProfileForm/editProfileForm.scss";
 import { Form, Field } from "react-final-form";
 import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "@features/registerSlice";
+import { loginUser } from "@features/authSlice";
 import Button from "@components/Button/Button";
 import ImageDnD from "@components/ImageDnD/ImageDnD";
-import { loginUser } from "@features/authSlice";
-import { updateUser } from "@features/registerSlice";
+import "@components/EditProfileForm/editProfileForm.scss";
 
 const EditProfileForm = () => {
   const { loggedInUser } = useSelector((state) => state.auth);
