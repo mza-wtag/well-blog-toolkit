@@ -1,15 +1,17 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
-import "@components/Login/login.scss";
-import { useDispatch } from "react-redux";
-import { loginUserWithLocalStorage } from "@actions/authActions";
+import { loginUser } from "@features/authSlice";
 import Button from "@components/Button/Button";
+import "@components/Login/login.scss";
 
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const registeredUsers = useSelector((state) => state.register.users);
+
   const validate = (values) => {
     const errors = {};
     if (!values.userName) {
@@ -21,8 +23,17 @@ const Login = () => {
     return errors;
   };
 
-  const handleLoginSubmit = (event) => {
-    dispatch(loginUserWithLocalStorage(event, setErrorMessage, navigate));
+  const handleLoginSubmit = (values) => {
+    const { userName, password } = values;
+    const user = registeredUsers.find(
+      (user) => user.userName === userName && user.password === password
+    );
+    if (user) {
+      dispatch(loginUser(user));
+      navigate("/");
+    } else {
+      setErrorMessage("Invalid username or password");
+    }
   };
 
   return (

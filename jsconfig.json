@@ -9,7 +9,8 @@
       "@pages/*": ["src/pages/*"],
       "@reducers/*": ["src/reducers/*"],
       "@styles/*": ["src/styles/*"],
-      "@store/*": ["src/store/*"]
+      "@store/*": ["src/store/*"],
+      "@features/*": ["src/features/*"]
     }
   },
   "include": ["src"]

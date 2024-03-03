@@ -13,14 +13,25 @@ import { Provider } from "react-redux";
 import { store } from "@store/store.js";
 import Login from "@components/Login/Login.jsx";
 import Register from "@components/Register/Register.jsx";
+import Profile from "@pages/Profile.jsx";
+import ProtectedRoute from "@components/ProtectedRoute/ProtectedRoute.jsx";
+import Blog from "@pages/Blog.jsx";
+import EditBlog from "@pages/EditBlog.jsx";
+import NotFound from "@components/NotFound/NotFound.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/me" element={<ProtectedRoute element={<Profile />} />} />
+      <Route path="/blog/:id" element={<ProtectedRoute element={<Blog />} />} />
+      <Route
+        path="/edit-blog/:blogId"
+        element={<ProtectedRoute element={<EditBlog />} />}
+      />
       <Route path="/register" element={<Register />} />
-      <Route path="*" element={<h1>Page not found</h1>} />
+      <Route path="*" element={<NotFound text="Page Not Found" />} />
     </Route>
   )
 );
